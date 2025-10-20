@@ -201,8 +201,8 @@ def m_crowding_distance(multiobjectives,fx,cmultiobjectives):
     i=cmultiobjectives
     index_of_objectives=np.argsort(y)
     sorted_based_on_objective=y[index_of_objectives]
-    y[index_of_objectives[-1]]=np.Inf
-    y[index_of_objectives[0]]=np.Inf
+    y[index_of_objectives[-1]]=np.inf
+    y[index_of_objectives[0]]=np.inf
     for j in range(1,len(index_of_objectives)-1):
         next_obj=sorted_based_on_objective[j+1]
         previous_obj=sorted_based_on_objective[j-1]
@@ -524,13 +524,13 @@ def CrowdingDistance(front,rank,multiobjectives,Nr,fx):
             sorted_based_on_objective=y[index_of_objectives,:]
             f_max=sorted_based_on_objective[-1,i]
             f_min=sorted_based_on_objective[0,i]
-            y[index_of_objectives[-1],i]=np.Inf#1#
-            y[index_of_objectives[0],i]=np.Inf#1#
+            y[index_of_objectives[-1],i]=np.inf#1#
+            y[index_of_objectives[0],i]=np.inf#1#
             for j in range(1,len(index_of_objectives)-1):
                 next_obj=sorted_based_on_objective[j+1,i]
                 previous_obj=sorted_based_on_objective[j-1,i]
                 if f_max-f_min==0:
-                    y[index_of_objectives[j],i]=np.Inf#1#
+                    y[index_of_objectives[j],i]=np.inf#1#
                 else:
                     y[index_of_objectives[j],i]=(next_obj-previous_obj)/(f_max-f_min)
         distance=np.zeros((len(front[F]),1))
@@ -942,13 +942,13 @@ def CrowdingDistanceDesicionSpace(front,rank,multiobjectives,Nr,Pob_float):
                 sorted_based_on_objective=y[index_of_objectives,:]
                 f_max=sorted_based_on_objective[-1,i]
                 f_min=sorted_based_on_objective[0,i]
-                y[index_of_objectives[-1],i]=np.Inf
-                y[index_of_objectives[0],i]=np.Inf
+                y[index_of_objectives[-1],i]=np.inf
+                y[index_of_objectives[0],i]=np.inf
                 for j in range(1,len(index_of_objectives)-1):
                     next_obj=sorted_based_on_objective[j+1,i]
                     previous_obj=sorted_based_on_objective[j-1,i]
                     if f_max-f_min==0:
-                        y[index_of_objectives[j],i]=np.Inf
+                        y[index_of_objectives[j],i]=np.inf
                     else:
                         y[index_of_objectives[j],i]=(next_obj-previous_obj)/(f_max-f_min)
         distance=np.zeros((len(front[F]),1))
@@ -1388,4 +1388,5 @@ def IMOEAD(functionanalysis,lim,NumIndiv,MutationPorc,NGenerations,Nstopelite=10
     runtime = time.time() - tstart
     print('\n elapsed [s]=',runtime)
     print('Pob_floatmax[0]=',Pob_floatmax[0])
+
     return Pob_floatmax,minfx,runtime
