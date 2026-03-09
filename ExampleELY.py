@@ -47,7 +47,7 @@ elif example[:-1]=='MMF':
 #%% Multi-objective optimization algorithms
 if algorithm=='ELY':
     Pob_floatmax,minfx,runtime=MMAE.ELY('Problems.'+example,lim_dimensions,
-                       Npopulation,mutation,Ngeneraciones,Nstopelite=Nstopelite,multiobjectives=multiobjectives,epsilon_bar=1e-40,binary=False)
+                       Npopulation,mutation,Ngeneraciones,Nstopelite=Nstopelite,multiobjectives=multiobjectives,epsilon_bar=1e-10,binary=False)
     # The results for MMF problems are better when binary=True
 elif algorithm=='NSGAII':
     Pob_floatmax,minfx,runtime=MMAE.NSGAII('Problems.'+example,lim_dimensions,
@@ -106,4 +106,5 @@ if drawresults:
      ax3.set_ylabel('$f_{1}$'+'(x)',{'fontname':'Cambria'});
      ax3.set_xlabel('$f_{2}$'+'(x)',{'fontname':'Cambria'});
      if multiobjectives>2:ax3.set_zlabel('$f_{3}$'+'(x)',{'fontname':'Cambria'})
+
      ax3.set_title(example,{'fontname':'Cambria'})
